@@ -13,15 +13,15 @@ class OrderRequest:
         return "OrderRequest:" + json.dumps(self.__dict__)
 
     @property
-    def Phone( self ):
+    def phone(self):
         return self.__phoneNumber
-    @Phone.setter
-    def Phone( self, value ):
+    @phone.setter
+    def phone(self, value):
         self.__phoneNumber = value
 
     @property
-    def PRODUCT_CODE( self ):
+    def productCode( self ):
         return self.__idcode
-    @PRODUCT_CODE.setter
-    def PRODUCT_CODE( self, value ):
+    @productCode.setter
+    def productCode( self, value ):
         self.__idcode = value

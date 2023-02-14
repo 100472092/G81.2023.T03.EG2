@@ -8,44 +8,46 @@ class OrderManager:
         pass
 
     def ValidateEAN13(self, eAn13):
-        if len(eAn13) == 13:
+        if len(eAn13) != 13:
             return False
-
         sumOdd = 0
         sumEven = 0
 
-        for i in range(len(eAn13)-1):
-            if i % 2 == 0:
+        for i in range(len(eAn13) - 1):
+            # Distinto de 0 para corregir que el primer indice sea 0
+            if i % 2 != 0:
                 sumEven += int(eAn13[i])
             else:
                 sumOdd += int(eAn13[i])
-
         sumEven *= 3
         validation = 10 - ((sumOdd + sumEven) % 10)
-
-        if (int(eAn13[-1]) != validation):
+        if int(eAn13[-1]) != validation:
             return False
 
         return True
 
-    def ReadproductcodefromJSON(self, fi):
+    def ReadproductcodefromJSON(self, barcode):
 
         try:
-            with open(fi) as f:
-                DATA = json.load(f)
-        except FileNotFoundError as e:
-            raise OrderManagementException("Wrong file or file path") from e
-        except json.JSONDecodeError as e:
-            raise OrderManagementException("JSON Decode Error - Wrong JSON Format") from e
+            with open(barcode) as barcodeEan13:
+                data = json.load(barcodeEan13)
+        except FileNotFoundError as exception:
+            raise OrderManagementException \
+                ("Wrong file or file path") from exception
+        except json.JSONDecodeError as exception:
+            raise OrderManagementException \
+                ("JSON Decode Error - Wrong JSON "
+                 "Format") from exception
 
         try:
-            PRODUCT = DATA["id"]
-            PH = DATA["phoneNumber"]
-            req = OrderRequest(PRODUCT, PH)
-        except KeyError as e:
-            raise OrderManagementException("JSON Decode Error - Invalid JSON Key") from e
-        if not self.ValidateEAN13(PRODUCT):
-            raise OrderManagementException("Invalid PRODUCT code")
+            product = data["id"]
+            phoneNumber = data["phoneNumber"]
+            req = OrderRequest(product, phoneNumber)
+        except KeyError as exception:
+            raise OrderManagementException \
+                ("JSON Decode Error - Invalid JSON Key") from exception
+        if not self.ValidateEAN13(product):
+            raise OrderManagementException("Invalid product code")
 
         # Close the file
         return req
