@@ -1,3 +1,14 @@
+"""
+Uses other modules to validate their methods and adds two
+more methods:
+encode(word): receives a word and encode it
+decode(word): receives an encoded word and decodes it
+
+:author
+:version
+:date
+"""
+
 import string
 from barcode import EAN13
 from barcode.writer import ImageWriter
@@ -9,6 +20,12 @@ SHIFT = 3
 
 
 def Encode(word):
+    """
+    Encodes a word using Caesar3
+
+    :param word: string
+    :return: string
+    """
     encoded = ""
     for letter in word:
         if letter == ' ':
@@ -19,6 +36,12 @@ def Encode(word):
     return encoded
 
 def Decode(word):
+    """
+    Decodes a word using Caesar3
+
+    :param word: string
+    :return: string
+    """
     encoded = ""
     for letter in word:
         if letter == ' ':
@@ -30,7 +53,7 @@ def Decode(word):
 
 def Main():
     mng = OrderManager()
-    res = mng.ReadproductcodefromJSON("test.json")
+    res = mng.ReadProductCodeFromJson("test.json")
     strRes = res.__str__()
     print(strRes)
     encodeRes = Encode(strRes)

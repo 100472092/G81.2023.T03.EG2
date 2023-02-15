@@ -1,3 +1,14 @@
+"""
+TODO
+Uses other modules to validate their methods and adds two
+more methods:
+encode(word): receives a word and encode it
+decode(word): receives an encoded word and decodes it
+
+:author
+:version
+:date
+"""
 import json
 from datetime import datetime
 
