@@ -9,6 +9,7 @@ class OrderManager:
 
     def ValidateEAN13(self, eAn13):
         if len(eAn13) != 13:
+            print("wrong len")
             return False
         sumOdd = 0
         sumEven = 0
@@ -20,8 +21,9 @@ class OrderManager:
             else:
                 sumOdd += int(eAn13[i])
         sumEven *= 3
-        validation = 10 - ((sumOdd + sumEven) % 10)
+        validation = (10 - ((sumOdd + sumEven) % 10)) % 10
         if int(eAn13[-1]) != validation:
+            print("wrong control-digit")
             return False
 
         return True
@@ -45,7 +47,7 @@ class OrderManager:
             req = OrderRequest(product, phoneNumber)
         except KeyError as exception:
             raise OrderManagementException \
-                ("JSON Decode Error - Invalid JSON Key") from exception
+                ("JSON Decode Error-Invalid JSON Key") from exception
         if not self.ValidateEAN13(product):
             raise OrderManagementException("Invalid product code")
 

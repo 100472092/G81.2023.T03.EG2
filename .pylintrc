@@ -156,7 +156,7 @@ class-naming-style=any
 
 # Regular expression matching correct class names. Overrides class-naming-
 # style. If left empty, class names will be checked with the set naming style.
-#class-rgx=^[A-Z][a-z_0-9]*$
+class-rgx=^[A-Z][a-z_0-9A-Z]*$
 
 # Naming style matching correct constant names.
 const-naming-style=UPPER_CASE
@@ -280,7 +280,7 @@ ignored-parents=
 max-args=8
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=7
+max-attributes=5
 
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=5
