@@ -5,7 +5,7 @@ Module capable getting a phone number and an idcode of a barcode.
 :date
 """
 import json
-from datetime import datetime
+#from datetime import datetime
 
 
 class OrderRequest:
@@ -13,8 +13,8 @@ class OrderRequest:
     def __init__( self, idcode, phoneNumber ):
         self.__phoneNumber = phoneNumber
         self.__idcode = idcode
-        justnow = datetime.utcnow()
-        self.__timeStamp = datetime.timestamp(justnow)
+        #justnow = datetime.utcnow()
+        #self.__timeStamp = datetime.timestamp(justnow)
 
     def __str__(self):
         """Transforms the object to a string and returns it """

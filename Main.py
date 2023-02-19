@@ -31,8 +31,8 @@ def Encode(word):
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (LETTERS.index(letter) + SHIFT) % len(LETTERS)
-            encoded = encoded + LETTERS[x]
+            newIndex = (LETTERS.index(letter) + SHIFT) % len(LETTERS)
+            encoded = encoded + LETTERS[newIndex]
     return encoded
 
 def Decode(word):
@@ -47,17 +47,18 @@ def Decode(word):
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (LETTERS.index(letter) - SHIFT) % len(LETTERS)
-            encoded = encoded + LETTERS[x]
+            newIndex = (LETTERS.index(letter) - SHIFT) % len(LETTERS)
+            encoded = encoded + LETTERS[newIndex]
     return encoded
 
 def Main():
     """
-    Prints an encoded word and a decoded word. Then creates an image with a barcode
+    Prints an encoded word and a decoded word. Then creates an image with a barcode get
+    via a Json file
     """
     mng = OrderManager()
     res = mng.ReadProductCodeFromJson("test.json")
-    strRes = res.__str__()
+    strRes = str(res)
     print(strRes)
     encodeRes = Encode(strRes)
     print("Encoded Res "+ encodeRes)
