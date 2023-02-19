@@ -52,6 +52,9 @@ def Decode(word):
     return encoded
 
 def Main():
+    """
+    Prints an encoded word and a decoded word. Then creates an image with a barcode
+    """
     mng = OrderManager()
     res = mng.ReadProductCodeFromJson("test.json")
     strRes = res.__str__()

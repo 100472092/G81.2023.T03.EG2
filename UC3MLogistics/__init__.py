@@ -1,13 +1,5 @@
 """
-TODO
-Uses other modules to validate their methods and adds two
-more methods:
-encode(word): receives a word and encode it
-decode(word): receives an encoded word and decodes it
-
-:author
-:version
-:date
+This module just imports the necessary libraries
 """
 
 from UC3MLogistics.OrderRequest import OrderRequest
