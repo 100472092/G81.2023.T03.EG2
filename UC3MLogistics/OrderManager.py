@@ -43,10 +43,14 @@ class OrderManager:
         for i in range(len(ean13) - 1):
             # not equal to correct the index starting.
             # Should start in 1.
+            try:
+                sumando = int(ean13[i])
+            except:
+                raise TypeError("The code must be composed by numbers")
             if i % 2 != 0:
-                sumEven += int(ean13[i])
+                sumEven += sumando
             else:
-                sumOdd += int(ean13[i])
+                sumOdd += sumando
         sumEven *= 3
         validation = (10 - ((sumOdd + sumEven) % 10)) % 10
         if int(ean13[-1]) != validation:

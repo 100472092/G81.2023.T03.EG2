@@ -17,7 +17,8 @@ from UC3MLogistics import OrderManager
 #GLOBAL VARIABLES
 LETTERS = string.ascii_letters + string.punctuation + string.digits
 SHIFT = 3
-PRUEBAS = ("test1_bien.json", "test2_bien.json", "test1_mal.json", "test2_mal.json")
+PRUEBAS = ("test1_bien.json", "test2_bien.json", "test1_mal.json",
+           "test2_mal.json", "test3_mal.json")
 
 
 def Encode(word):
