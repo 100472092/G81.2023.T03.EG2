@@ -37,7 +37,7 @@ class OrderManager:
         :return: boolean
         """
         if not re.fullmatch('^[0-9]{13}$', ean13):
-            print("falla la expresion")
+
             return False
         sumOdd = 0
         sumEven = 0
@@ -45,7 +45,6 @@ class OrderManager:
         for i in range(len(ean13) - 1):
             # not equal to correct the index starting.
             # Should start in 1.
-            #^[0-9]{13}$
             sumando = int(ean13[i])
             if i % 2 != 0:
                 sumEven += sumando
@@ -54,7 +53,7 @@ class OrderManager:
         sumEven *= 3
         validation = (10 - ((sumOdd + sumEven) % 10)) % 10
         if int(ean13[-1]) != validation:
-            print("falla la suma")
+
             return False
 
         return True
