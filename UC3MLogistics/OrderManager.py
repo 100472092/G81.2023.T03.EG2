@@ -12,6 +12,7 @@ ReadproductcodefromJson(self, jsonFile)
 
 
 import json
+import re
 from .OrderMangementException import OrderManagementException
 from .OrderRequest import OrderRequest
 
@@ -35,7 +36,8 @@ class OrderManager:
         :param eAn13: barcode
         :return: boolean
         """
-        if len(ean13) != 13:
+        if not re.fullmatch('^[0-9]{13}$', ean13):
+            print("falla la expresion")
             return False
         sumOdd = 0
         sumEven = 0
@@ -43,10 +45,8 @@ class OrderManager:
         for i in range(len(ean13) - 1):
             # not equal to correct the index starting.
             # Should start in 1.
-            try:
-                sumando = int(ean13[i])
-            except:
-                raise TypeError("The code must be composed by numbers")
+            #^[0-9]{13}$
+            sumando = int(ean13[i])
             if i % 2 != 0:
                 sumEven += sumando
             else:
@@ -54,6 +54,7 @@ class OrderManager:
         sumEven *= 3
         validation = (10 - ((sumOdd + sumEven) % 10)) % 10
         if int(ean13[-1]) != validation:
+            print("falla la suma")
             return False
 
         return True

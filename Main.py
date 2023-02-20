@@ -59,7 +59,7 @@ def Main():
     via a Json file
     """
     mng = OrderManager()
-    res = mng.ReadProductCodeFromJson(PRUEBAS[0])
+    res = mng.ReadProductCodeFromJson(PRUEBAS[4])
     strRes = str(res)
     print(strRes)
     encodeRes = Encode(strRes)
