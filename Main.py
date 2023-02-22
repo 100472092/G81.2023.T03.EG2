@@ -17,6 +17,8 @@ from UC3MLogistics import OrderManager
 #GLOBAL VARIABLES
 LETTERS = string.ascii_letters + string.punctuation + string.digits
 SHIFT = 3
+# conjunto de pruebas. en la función main cambiar el índice
+# para cambair el archivo
 PRUEBAS = ("test1_bien.json", "test2_bien.json", "test1_mal.json",
            "test2_mal.json", "test3_mal.json")
 
@@ -59,6 +61,7 @@ def Main():
     via a Json file
     """
     mng = OrderManager()
+    # indice entre 0 y 4.
     res = mng.ReadProductCodeFromJson(PRUEBAS[4])
     strRes = str(res)
     print(strRes)
